@@ -34,12 +34,13 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
 
       // create a stripe session
       const session = await stripe.checkout.sessions.create({
-        success_url: "http://localhost:5173/checkout/success",
+        success_url:
+          "https://ecommerce-client-alpha-blue.vercel.app/checkout/success",
         line_items: lineItems,
         mode: "payment",
         payment_method_types: ["card"],
         customer_email: email,
-        cancel_url: "http://localhost:5173",
+        cancel_url: "https://ecommerce-client-alpha-blue.vercel.app",
       });
 
       // create the item
